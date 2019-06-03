@@ -34,13 +34,12 @@
               </thead>
               <tbody class="train-list">
                 <!-- add dynamically -->
-                <tr scope="row">
-                  <!-- <th scope="row">1</th> -->
+                <!-- <tr scope="row">
                   <td>Oz Express</td>
                   <td>Kansas</td>
                   <td>25</td>
                   <td>3:30pm</td>
-                  <td>5</td>
+                  <td>5</td> -->
                 </tr>
               </tbody>
             </table>
@@ -66,7 +65,7 @@
               </div>
               <div class="form-group">
                 <label for="inputFirstTrainTime">First Train Time (HH:mm - military time)</label>
-                <input type="time" class="form-control" id="firstTrainTime" placeholder="12:00">
+                <input type="military time" class="form-control" id="firstTrainTime" placeholder="12:00">
               </div>
               <div class="form-group">
                 <label for="inputFrequency">Frequency (min)</label>
@@ -82,6 +81,8 @@
   </div>
   <!-- jquery Link -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <!-- Moment Library Link -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>

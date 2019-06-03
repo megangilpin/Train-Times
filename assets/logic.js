@@ -51,13 +51,37 @@ database.ref().on("child_added", function (childSnapshot) {
   console.log(childFirstTrainTime);
   console.log(childFrequency);
 
-  var nextArrival = 
+  // Push back first time so that it comes before current time
+  var firstTimeConverted = moment(childFirstTrainTime, "HH:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  var currentTime = moment();
+  console.log("Current Time: " + moment(currentTime).format("hh:mm"));
+
+  // Difference between the times
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("Difference in time: " + diffTime);
+
+  // Time apart (remainder)
+  var timeRemaining = diffTime % childFrequency
+  console.log(timeRemaining);
+
+  // Minutes until train
+  var minAway = childFrequency - timeRemaining;
+  console.log("Minutes till Train: " + minAway);
+
+  // Time of next arriving train
+  var nextArrival = moment().add(minAway, 'minutes').format("hh:mm a");
+  console.log("Next Arrival: " + nextArrival);
 
   // Creating new row to display
-  var newRow = $("<tr  scope='row'>").append(
+  var newRow = $("<tr scope='row'>").append(
     $("<td>").text(childTrainName),
     $("<td>").text(childDestination),
     $("<td>").text(childFrequency),
+    $("<td>").text(nextArrival),
+    $("<td>").text(minAway),
+
 );
 
 // Appends new row to the table
