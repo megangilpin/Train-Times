@@ -18,47 +18,49 @@ var destination = "";
 var firstTrainTime = "";
 var frequency = 0
 
-$(".addTrain").on("click", function (e) {
-  e.preventDefault();
+$(".addTrain").on("click", function (event) {
+  event.preventDefault();
 
   trainName = $("#trainName").val().trim();
   destination = $("#destination").val().trim();
+  frequency = $("#frequency").val().trim();
   firstTrainTime = $("#firstTrainTime").val();
   frequency = $("#frequency").val().trim();
-
-  console.log("buttonclicked")
 
   database.ref().push({
     trainName: trainName,
     destination: destination,
-    firstTrainTime: firstTrainTime,
     frequency: frequency,
+    firstTrainTime: firstTrainTime,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   });
 });
 
-// database.ref().on("child_added", function (childsnapshot) {
+database.ref().on("child_added", function (childSnapshot) {
 
-//   var childEmployee = childsnapshot.val();
+  // stores all child elements into a variable
+  var childTrainName = childSnapshot.val().trainName;
+  var childDestination = childSnapshot.val().destination;
+  var childFrequency = childSnapshot.val().frequency;
+  var childFirstTrainTime = childSnapshot.val().firstTrainTime;
 
-//   console.log(childEmployee.name);
-//   console.log(childEmployee.role);
-//   console.log(childEmployee.startDate);
-//   console.log(childEmployee.rate);
 
-//   var employeeDiv = $("<tr scope='row'>");
-//   //employeeDiv.attr("scope", "row");
+  // Train Info
+  console.log(childTrainName);
+  console.log(childDestination);
+  console.log(childFirstTrainTime);
+  console.log(childFrequency);
 
-//   var nameTd = $("<td>").text(childEmployee.name);
-//   var roleTd = $("<td>").text(childEmployee.role);
-//   var dateTd = $("<td>").text(childEmployee.startDate);
-//   var rateTd = $("<td>").text(childEmployee.rate);
+  var nextArrival = 
 
-//   employeeDiv.append(nameTd);
-//   employeeDiv.append(roleTd);
-//   employeeDiv.append(dateTd);
-//   employeeDiv.append(rateTd);
+  // Creating new row to display
+  var newRow = $("<tr  scope='row'>").append(
+    $("<td>").text(childTrainName),
+    $("<td>").text(childDestination),
+    $("<td>").text(childFrequency),
+);
 
-//   $(".employeeList").append(employeeDiv);
+// Appends new row to the table
+$(".train-list").append(newRow);
 
-// });
+});
