@@ -1,0 +1,25 @@
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
+.jumbotron{
+  padding: 20px;
+}
+
+.header{
+  font-family: 'Monoton', cursive;
+  font-size: 100px;
+}
+
+.lead{
+  font-family: 'Damion', cursive;
+  font-size: 50px;
+}
+
+.card-header{
+  font-family: 'Righteous', cursive;
+}
+
+footer{
+  font-family: 'Righteous', cursive;
+}
