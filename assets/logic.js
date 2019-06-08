@@ -25,7 +25,6 @@ $(".addTrain").on("click", function (event) {
   destination = $("#destination").val().trim();
   frequency = $("#frequency").val().trim();
   firstTrainTime = $("#firstTrainTime").val();
-  frequency = $("#frequency").val().trim();
 
   database.ref().push({
     trainName: trainName,
@@ -81,10 +80,16 @@ database.ref().on("child_added", function (childSnapshot) {
     $("<td>").text(childFrequency),
     $("<td>").text(nextArrival),
     $("<td>").text(minAway),
+  );
 
-);
+  newRow.attr("value", "clicked"),
 
-// Appends new row to the table
-$(".train-list").append(newRow);
+  // Appends new row to the table
+  $(".train-list").append(newRow);
 
+//  Clears all of the text-boxes
+  $("#trainName").val("");
+  $("#destination").val("");
+  $("#frequency").val("");
+  $("#firstTrainTime").val("");
 });
